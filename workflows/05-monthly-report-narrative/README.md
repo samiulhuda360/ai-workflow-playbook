@@ -7,6 +7,21 @@ Turns the month's KPI table and the managers' notes into leadership commentary: 
 what to watch, and questions for the team. It writes "reason not given" when the notes don't explain a change,
 instead of guessing one.
 
+## How it works
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#e6f2ef", "primaryBorderColor": "#2f6f68", "primaryTextColor": "#13302c", "lineColor": "#5f7471", "secondaryColor": "#f3efe6", "tertiaryColor": "#f7f8f6"}}}%%
+flowchart TD
+    K["KPI table<br/>this month, last month, change, last year"] --> A["AI with instructions.md"]
+    N["Managers' notes<br/>each with a name"] --> A
+    A --> H["Headline and what changed"]
+    A --> W["Why: from the notes, naming who said it,<br/>or reason not given"]
+    A --> Q["What to watch and questions for the team"]
+    H --> C{"Checks pass?<br/>every number in the table or notes,<br/>no guessed causes"}
+    W --> C
+    C -->|"yes"| S["Send the questions, then the report"]
+```
+
 ## Set it up once
 
 Paste [instructions.md](instructions.md) into a Claude Project, ChatGPT GPT or Gemini Gem.
@@ -27,13 +42,21 @@ Paste [instructions.md](instructions.md) into a Claude Project, ChatGPT GPT or G
 
 The real reason behind any change marked "reason not given".
 
+## Design notes
+
+- The numbers check compares the size of each number and leaves the direction to the words. "Online revenue fell
+  6.0%" therefore matches a table that says "-6.0%".
+- Small counting numbers (up to 5) are allowed, so "three of the five regions" reads naturally.
+
 ## Tested on
 
-Three invented months: a busy month with an unexplained jump in returns, a month where online sales fell 6% and
-nobody explained why, and a quiet month that should be reported as steady. See [results](../../results/REPORT.md).
+Three invented months:
+- a busy month with an unexplained jump in returns;
+- a month where online sales fell 6% and nobody explained why;
+- a quiet month that should be reported as steady.
 
-## What went wrong, and what changed
+| Model | Answer key | Checks | Median time |
+|---|---|---|---|
+| `gemini-flash-lite-latest` | 11/11 | 6/6 | 2.5 s |
 
-The AI wrote "online revenue fell 6.0%" where the table says "-6.0%". That is correct English, but the numbers
-check failed it because the sign differed. The check was fixed, not the instructions: it now compares the size
-of each number and leaves the direction to the words. Sometimes the evaluation is what's wrong.
+Full results: [results/REPORT.md](../../results/REPORT.md). Rerun with `python -m playbook run 05`.

@@ -3,8 +3,24 @@
 **Team:** marketing, ecommerce · **Pattern:** generate within rules · **Works in:** Claude Projects, ChatGPT
 GPTs, Gemini Gems (with the brand guide uploaded as a knowledge file)
 
-Writes website and marketplace copy from a product spec sheet in the brand's voice, within each channel's length
-limits, without claims the business can't support ("non-toxic", "eco-friendly", "best").
+Writes website and marketplace copy from a product spec sheet in the brand's voice. The copy stays within each
+channel's length limits and makes no claims the business can't support, such as "non-toxic", "eco-friendly" or
+"best".
+
+## How it works
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#e6f2ef", "primaryBorderColor": "#2f6f68", "primaryTextColor": "#13302c", "lineColor": "#5f7471", "secondaryColor": "#f3efe6", "tertiaryColor": "#f7f8f6"}}}%%
+flowchart TD
+    S["Spec sheet<br/>materials, sizes, tests, care, warranty"] --> A["AI with instructions.md"]
+    B["Brand guide<br/>knowledge file"] --> A
+    A --> W["Website copy<br/>title, description, bullets"]
+    A --> M["Marketplace copy<br/>title, bullets"]
+    A --> L["Check before publishing<br/>claims a person must confirm"]
+    W --> C{"Checks pass?<br/>lengths, no banned claims,<br/>numbers from the spec"}
+    M --> C
+    C -->|"yes"| P["A person confirms the listed claims, then publishes"]
+```
 
 ## Set it up once
 
@@ -20,25 +36,32 @@ limits, without claims the business can't support ("non-toxic", "eco-friendly", 
 
 ## Check before you trust it
 
-- Length limits per channel. Tested automatically.
-- No banned words or claims in the copy. Tested automatically; the brand guide's own list doesn't count.
-- Every number (sizes, hours, warranty) is in this product's spec sheet. Tested automatically against the spec
-  sheet alone, so a warranty mentioned only in the brand guide fails.
-- Certificates are quoted with who tested them ("BPA-free (tested by an accredited lab)").
+- Length limits per channel. Tested automatically. The website title has 70 characters, the description 600, a
+  bullet 150; the marketplace title has 200 and a bullet 250; each list has at most five bullets.
+- No banned words or claims in the copy. Tested automatically.
+- Every number (sizes, hours, warranty) is in this product's spec sheet. Tested automatically.
+- Certificates are quoted with who tested them, for example "BPA-free (tested by an accredited lab)".
 
 ## When a person must decide
 
 Any claim about health, safety or the environment, and anything on the "check before publishing" list.
 
+## Design notes
+
+- The banned-claims check reads only the copy fields, not the AI's notes, and allows a claim only when the spec
+  sheet itself makes it. The brand guide lists the banned words, so it never counts as a source.
+- The numbers check compares against the spec sheet alone. That way a warranty mentioned only in the brand guide
+  can't appear in a product's copy.
+
 ## Tested on
 
-Three invented spec sheets: an insulated bottle, a bamboo board set (tempting "eco-friendly"), and a kids' lunch
-box (tempting "non-toxic" and "healthy"). See [results](../../results/REPORT.md).
+Three invented spec sheets:
+- an insulated bottle;
+- a bamboo board set, which tempts "eco-friendly";
+- a kids' lunch box, which tempts "non-toxic" and "healthy".
 
-## What went wrong, and what changed
+| Model | Answer key | Checks | Median time |
+|---|---|---|---|
+| `gemini-flash-lite-latest` | 12/12 | 18/18 | 3.2 s |
 
-The first problem was in the evaluation, not the AI. The brand guide lists every banned word, and the checks
-compared the copy against "the input plus reference files", so a banned claim would have passed because the guide
-itself contains it. The same hole would have let an invented "2-year warranty" through. Fix: the claims and
-numbers checks now compare against the spec sheet only, and read only the copy fields, not the AI's notes. Lesson:
-test the tests. A check that can't fail proves nothing.
+Full results: [results/REPORT.md](../../results/REPORT.md). Rerun with `python -m playbook run 04`.

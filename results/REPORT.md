@@ -12,6 +12,6 @@ Each workflow's instructions run on its examples (synthetic data). *Answer key*:
 | Monthly report narrative from a KPI table | `gemini-flash-lite-latest` | 3 | 11/11 (100%) | 6/6 (100%) | 2.5 s | 593 / 323 |
 | Staff questions answered from policy documents | `gemini-flash-lite-latest` | 13 | 20/20 (100%) | 26/26 (100%) | 2.0 s | 1021 / 26 |
 
-## What went wrong
+## Failed answer-key facts and checks
 
-Nothing: every answer-key fact and every check passed.
+None: every answer-key fact and every check passed.

@@ -7,6 +7,16 @@ week before: missing access is the commonest reason people never start).
 **Goal:** everyone leaves with one workflow set up for a task they do every week, has run it on their own work,
 and knows the checks they must make before trusting the output.
 
+![Four of the workshop slides](../docs/screenshots/workshop-slides.png)
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#e6f2ef", "primaryBorderColor": "#2f6f68", "primaryTextColor": "#13302c", "lineColor": "#5f7471", "secondaryColor": "#f3efe6", "tertiaryColor": "#f7f8f6"}}}%%
+flowchart LR
+    B["Before<br/>collect real tasks,<br/>check tool access,<br/>set up workflows 02 and 06"] --> S["Session (60 min)<br/>demo, hands-on,<br/>the checks habit,<br/>your own workflow"]
+    S --> A["After<br/>log trained, then use<br/>with help or alone"]
+    A --> R["Day 14<br/>adoption report,<br/>follow up the blockers"]
+```
+
 ## Before the session
 
 - Ask each person for one repetitive task they did last week and how long it took. Pick the workshop examples
@@ -20,7 +30,7 @@ and knows the checks they must make before trusting the output.
 | Minutes | What | How |
 |---|---|---|
 | 0-5 | Why we're here | One real task from the team, timed. "We'll get this to 5 minutes, with checks." |
-| 5-15 | What AI does well and badly | Slides 3-6. Show one good output and one confident wrong answer from the playbook's test results. |
+| 5-15 | What AI does well, and where it needs a check | Slides 3-6. Show one output next to its automatic checks (`python -m playbook show 01 02-partial`). |
 | 15-25 | Demo: a workflow, not a chat | Live: meeting notes → actions (workflow 02). Point at the instructions, the fixed output format, the source quotes. |
 | 25-45 | Hands-on | Exercise 1 (everyone), then exercise 2 or 3 (choose). Facilitator and champions walk the room. |
 | 45-52 | The checks habit | Each person shows one check they made and what it caught. |

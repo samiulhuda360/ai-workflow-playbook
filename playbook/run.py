@@ -14,6 +14,7 @@ from .llm import Client
 from .spec import ROOT, Workflow
 
 RESULTS = ROOT / "results"
+FAILURES_HEADING = "## Failed answer-key facts and checks"
 
 
 def slug(model: str) -> str:
@@ -110,7 +111,7 @@ def report(models: list[str] | None = None) -> str:
             f"| {s['title']} | `{s['model']}` | {s['examples']} | {ak} | {ck} | {s['median_seconds']} s | {tok} |"
         )
 
-    lines += ["", "## What went wrong", ""]
+    lines += ["", FAILURES_HEADING, ""]
     any_miss = False
     for r in sorted(results, key=lambda r: (r["workflow"], r["model"])):
         for ex in r["examples"]:
@@ -121,7 +122,7 @@ def report(models: list[str] | None = None) -> str:
                 any_miss = True
                 lines.append(f"- **{r['title']}** · `{r['model']}` · {ex['example']}: " + "; ".join(issues))
     if not any_miss:
-        lines.append("Nothing: every answer-key fact and every check passed.")
+        lines.append("None: every answer-key fact and every check passed.")
     text = "\n".join(lines) + "\n"
     (RESULTS / "REPORT.md").write_text(text, encoding="utf-8")
     return text

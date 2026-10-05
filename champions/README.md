@@ -16,6 +16,20 @@ keep going.
 
 First work out which kind of problem it is. Each has a different fix:
 
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#e6f2ef", "primaryBorderColor": "#2f6f68", "primaryTextColor": "#13302c", "lineColor": "#5f7471", "secondaryColor": "#f3efe6", "tertiaryColor": "#f7f8f6"}}}%%
+flowchart TD
+    S["Trained 14+ days ago,<br/>not yet using it alone"] --> Q{"What's in the way?"}
+    Q -->|"doesn't know how"| L["Learning: show them once<br/>on their own task"]
+    Q -->|"no time"| T["Time: book 20 minutes<br/>on a task due this week"]
+    Q -->|"no seat in the tool"| A["Access: a licence request to IT"]
+    Q -->|"output looks wrong"| X["Technical: report it to the<br/>AI and systems owner with an example"]
+    L --> G["Log it as blocked, with the kind in notes"]
+    T --> G
+    A --> G
+    X --> G
+```
+
 | Problem | Sounds like | What helps |
 |---|---|---|
 | Learning | "I don't know how to export the reviews with IDs." | Show them once on their own task; point to the guide |

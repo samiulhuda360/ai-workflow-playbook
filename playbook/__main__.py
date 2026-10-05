@@ -58,7 +58,7 @@ def main(argv: list[str] | None = None) -> int:
                     f"{client.model:28} {wf.id:42} answer key {s['answer_key']:>7}  checks {s['checks']:>7}  "
                     f"median {s['median_seconds']} s"
                 )
-        print("\n" + runner.report().split("\n## What went wrong")[0])
+        print("\n" + runner.report().split("\n" + runner.FAILURES_HEADING)[0])
         return 0
 
     if args.cmd == "show":

@@ -2,6 +2,11 @@
 marp: true
 paginate: true
 title: Getting real work done with AI
+style: |
+  section { background: #fbfaf7; color: #1d2b2a; }
+  h1, h2 { color: #1f5f5b; }
+  strong { color: #174a47; }
+  table { font-size: 0.85em; }
 ---
 
 # Getting real work done with AI
@@ -14,8 +19,8 @@ title: Getting real work done with AI
 
 A supplier email arrives. Someone reads it, updates the order tracker, writes a reply.
 
-**Today:** time one before the session and put the number here. Easy to miss a changed date.
-**With a workflow:** paste, check the flagged lines, edit the reply. Time it again at the end of the session.
+**By hand:** read it, update the tracker, write the reply. It's easy to miss a changed date.
+**With a workflow:** paste it, check the flagged lines, edit the reply. We time both ways today.
 
 ---
 
@@ -39,13 +44,13 @@ A supplier email arrives. Someone reads it, updates the order tracker, writes a 
 
 ---
 
-## Where it goes wrong
+## Where AI needs a check
 
 - It fills gaps with confident guesses: a date for "Monday", a reason nobody gave
 - It drops the one serious complaint inside 200 happy reviews
 - It answers from general knowledge when your policy is silent
 
-**Each of these happened in our tests. Each workflow has a rule and a check for it.**
+**Each workflow has a rule and an automatic check for each of these.**
 
 ---
 
@@ -98,7 +103,7 @@ Customer names, addresses, phone numbers, order or payment details, staff record
 - One task you do every week
 - How long it takes now
 - 20 minutes booked to set it up with a champion
-- Use it three times, then tell us what changed
+- Use it three times, then tell us how it went
 
 ---
 

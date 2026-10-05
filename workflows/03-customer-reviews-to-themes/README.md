@@ -3,9 +3,25 @@
 **Team:** customer experience, marketing · **Pattern:** classify at scale, escalate to a person ·
 **Works in:** Claude Projects, ChatGPT GPTs, Gemini Gems
 
-Reads a month of reviews and returns the themes (with counts, the review IDs and a real quote each), practical
-actions, and every review a person must read today: injuries, allergic reactions, contamination, child safety,
-legal threats.
+Reads a month of reviews and returns:
+- the themes, each with a count, the review IDs and a real quote;
+- practical actions;
+- every review a person must read today: injuries, allergic reactions, contamination, child safety and legal
+  threats.
+
+## How it works
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#e6f2ef", "primaryBorderColor": "#2f6f68", "primaryTextColor": "#13302c", "lineColor": "#5f7471", "secondaryColor": "#f3efe6", "tertiaryColor": "#f7f8f6"}}}%%
+flowchart TD
+    R["Review export<br/>ID, stars, text"] --> A["AI with instructions.md"]
+    A --> T["Themes: count, review IDs, word-for-word quote"]
+    A --> X["Actions for the product team"]
+    A --> P["Needs a person: safety, health, legal<br/>whatever the star rating"]
+    P --> H["A person reads each one today"]
+    T --> S["Share with the product team"]
+    X --> S
+```
 
 ## Set it up once
 
@@ -13,7 +29,7 @@ Paste [instructions.md](instructions.md) into a Claude Project, ChatGPT GPT or G
 
 ## Use it
 
-1. Export the month's reviews with an ID, the star rating and the text (one per line).
+1. Export the month's reviews with an ID, the star rating and the text, one per line.
 2. Paste them in. For more than about 200 reviews, split them into batches.
 3. **Read every review in "needs a person" yourself, today.**
 4. Share the themes and actions with the product team.
@@ -28,14 +44,27 @@ Paste [instructions.md](instructions.md) into a Claude Project, ChatGPT GPT or G
 
 Every safety, health or legal review. The AI's job is to make sure none is missed, not to answer them.
 
+## Design notes
+
+- The safety rule reads: "every review that mentions an injury... even if it's only one review and even if the
+  rating is high". A summary of sentiment would otherwise bury one serious complaint inside a positive theme.
+- Ordinary complaints (late delivery, wrong colour, price) stay in the themes and are not flagged. That keeps the
+  "needs a person" list short enough to read every day.
+
 ## Tested on
 
-Two invented batches: 24 drink-bottle reviews and 20 lunch-box reviews, with planted safety reviews: a burn, a
-cut lip, mould, a rash, children feeling sick, a threat to report the company to the regulator, and a pinched finger hidden inside a
-**4-star** review. See [results](../../results/REPORT.md).
+Two invented batches: 24 drink-bottle reviews and 20 lunch-box reviews. Both contain planted safety reviews:
+- a burn;
+- a cut lip;
+- mould;
+- a rash;
+- children feeling sick;
+- a threat to report the company to the regulator;
+- a pinched finger hidden inside a **4-star** review.
 
-## What went wrong, and what changed
+| Model | Answer key | Checks | Median time |
+|---|---|---|---|
+| `gemini-flash-lite-latest` | 15/15 | 8/8 | 4.0 s |
 
-Version 1 found every planted safety review and flagged no ordinary complaint as one. The rule that does the work:
-"every review that mentions an injury... even if it's only one review and even if the rating is high". Without
-it, a model summarising sentiment can bury a single serious complaint inside a positive theme.
+The answer key requires every planted safety review to be flagged, and no ordinary complaint. Full results:
+[results/REPORT.md](../../results/REPORT.md). Rerun with `python -m playbook run 03`.
