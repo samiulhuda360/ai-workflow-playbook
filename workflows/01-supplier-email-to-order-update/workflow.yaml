@@ -1,0 +1,22 @@
+title: Supplier email → order update
+team: Operations
+output: json
+checks:
+  - id: json
+    type: json_block
+  - id: has-supplier
+    type: required
+    fields: [supplier]
+  - id: nothing-invented
+    # every PO number, SKU, quantity and date must be in the email
+    type: in_source
+    fields: [po_number, "lines[].sku", "lines[].qty", "lines[].new_date"]
+  - id: no-commitments
+    # the draft must not accept a change on the company's behalf
+    type: banned_phrases
+    field: reply_draft
+    phrases:
+      - "\\bwe (accept|agree to|approve)\\b"
+      - "\\b(accepted|approved)\\b"
+      - "that (works|is fine) for us"
+      - "please (go ahead|proceed) with the (new|revised|updated)"

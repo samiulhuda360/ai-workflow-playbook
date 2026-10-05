@@ -1,0 +1,7 @@
+expect:
+- type: cites
+  values:
+  - Staff handbook §3
+- type: mentions
+  values:
+  - $100

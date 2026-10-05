@@ -1,0 +1,16 @@
+title: Customer reviews → themes and complaints
+team: Customer experience
+output: json
+checks:
+  - id: json
+    type: json_block
+  - id: has-count-and-themes
+    type: required
+    fields: [reviews_read, themes]
+  - id: quotes-word-for-word
+    type: quotes_verbatim
+    fields: ["themes[].quote"]
+  - id: flagged-ids-exist
+    # a flagged review must be one of the reviews in the batch
+    type: in_source
+    fields: ["needs_person[].id", "themes[].review_ids[]"]

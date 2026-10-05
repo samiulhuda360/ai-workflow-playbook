@@ -1,0 +1,4 @@
+expect:
+- type: cites
+  values:
+  - Staff handbook §4

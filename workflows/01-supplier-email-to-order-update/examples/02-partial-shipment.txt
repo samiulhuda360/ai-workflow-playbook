@@ -1,0 +1,18 @@
+From: Dispatch <dispatch@supplier-b.example>
+To: orders@company.example
+Date: Thu, 1 Oct 2026 15:40 +1300
+Subject: RE: PO-20388 mailer boxes
+
+Kia ora,
+
+Shipping update for PO-20388:
+
+- MB-SM small mailer boxes, 5,000 units: all dispatched today with our freight forwarder, consignment HF-77812.
+- MB-LG large mailer boxes, 3,000 units: we could only dispatch 2,000 today because of a board shortage. The
+  remaining 1,000 will follow by the end of next week.
+
+Sorry for the split delivery. Let us know if the balance is urgent.
+
+Ngā mihi,
+Aroha Ngata
+Supplier B Packaging Ltd

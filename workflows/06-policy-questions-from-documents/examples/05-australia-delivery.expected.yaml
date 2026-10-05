@@ -1,0 +1,7 @@
+expect:
+- type: cites
+  values:
+  - Shipping policy §3
+- type: mentions
+  values:
+  - 3 to 7 working days

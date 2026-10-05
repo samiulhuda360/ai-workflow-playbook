@@ -1,0 +1,20 @@
+From: Lily Chen <lily.chen@supplier-a.example>
+To: orders@company.example
+Date: Mon, 5 Oct 2026 09:12 +0800
+Subject: PO-20417 – production update
+
+Hi team,
+
+Quick update on PO-20417.
+
+Our powder-coating line is down for scheduled maintenance this week, so the 1,200 pcs of TW-BTL-750 (750 ml
+insulated bottle, Harbour Blue) will now be ready on 24 October instead of 10 October.
+
+The 800 pcs of TW-BTL-500 are not affected and will ship on 10 October as planned.
+
+Can you please confirm the new date for TW-BTL-750 works for you? If you need part of the 750 ml order earlier we
+can try to split the shipment.
+
+Best regards,
+Lily Chen
+Supplier A Manufacturing Co.

@@ -1,0 +1,3 @@
+expect:
+  # the return-rate rise has no explanation in the notes: it must say so, not guess
+  - {type: mentions, values: ["return rate", "reason not given", "+12.7%", "-10.7%", "12 days"]}

@@ -1,0 +1,32 @@
+date,person,team,workflow,event,notes
+2026-08-24,Priya,Operations,01 supplier email,trained,Session 1
+2026-08-24,Tom,Warehouse,01 supplier email,trained,Session 1
+2026-08-24,Mere,Ecommerce,04 product description,trained,Session 1
+2026-08-24,Anika,Marketing,04 product description,trained,Session 1
+2026-08-24,Sam,Finance,05 monthly report,trained,Session 1
+2026-08-24,Wiremu,Warehouse,02 meeting notes,trained,Session 1
+2026-08-25,Priya,Operations,01 supplier email,used_with_help,Office hours
+2026-08-26,Priya,Operations,01 supplier email,used_alone,
+2026-08-28,Priya,Operations,01 supplier email,used_alone,
+2026-09-02,Priya,Operations,01 supplier email,workflow_changed,PO tracker now updated from the JSON block
+2026-08-27,Mere,Ecommerce,04 product description,used_alone,
+2026-09-01,Mere,Ecommerce,04 product description,used_alone,Listing for 500 ml bottle
+2026-08-27,Anika,Marketing,04 product description,used_with_help,
+2026-09-03,Anika,Marketing,04 product description,blocked,time: campaign deadline
+2026-08-31,Sam,Finance,05 monthly report,used_alone,August report
+2026-09-30,Sam,Finance,05 monthly report,used_alone,September report
+2026-10-01,Sam,Finance,05 monthly report,workflow_changed,Commentary drafted by AI and checked against the table
+2026-08-26,Tom,Warehouse,01 supplier email,blocked,access: no Claude seat for warehouse
+2026-08-28,Wiremu,Warehouse,02 meeting notes,used_with_help,
+2026-09-08,Wiremu,Warehouse,02 meeting notes,stopped,Notes are handwritten on the floor; typing them up takes longer
+2026-09-07,Jess,Marketing,03 customer reviews,trained,Session 2
+2026-09-07,Leo,Marketing,03 customer reviews,trained,Session 2
+2026-09-07,Aroha,Customer service,03 customer reviews,trained,Session 2
+2026-09-07,Aroha,Customer service,06 policy questions,trained,Session 2
+2026-09-08,Aroha,Customer service,06 policy questions,used_alone,
+2026-09-10,Aroha,Customer service,06 policy questions,used_alone,
+2026-09-15,Aroha,Customer service,06 policy questions,workflow_changed,New staff use it before asking the team lead
+2026-09-09,Jess,Marketing,03 customer reviews,used_alone,
+2026-09-30,Jess,Marketing,03 customer reviews,used_alone,September reviews
+2026-09-14,Leo,Marketing,03 customer reviews,blocked,learning: unsure how to export reviews with IDs
+2026-09-10,Aroha,Customer service,03 customer reviews,used_with_help,

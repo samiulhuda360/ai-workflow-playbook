@@ -1,0 +1,89 @@
+{
+ "workflow": "05-monthly-report-narrative",
+ "title": "Monthly report narrative from a KPI table",
+ "model": "gemini-flash-lite-latest",
+ "date": "2026-10-05",
+ "examples": [
+  {
+   "example": "01-september",
+   "output": "**Headline:** Online store revenue and orders grew this month, while Marketplace revenue fell.\n\n**What changed**\n- Return rate: 4.9% to 3.1% (+1.8 pts)\n- Marketplace (Australia) revenue: $64,100 to $71,800 (-10.7%)\n- Freight cost per order: $7.85 to $7.20 (+9.0%)\n- Online store revenue: $182,400 to $161,900 (+12.7%)\n- Orders: 4,380 to 3,950 (+10.9%)\n\n**Why**\n- Return rate: reason not given.\n- Marketplace (Australia) revenue: Priya reported the 750 ml bottle was out of stock on the Australian marketplace for 12 days, so marketplace sales fell.\n- Freight cost per order: Tom reported they paid for air freight to get urgent restock into Australia, which pushed freight cost up.\n- Online store revenue: Anika reported the spring email campaign went out on 8 September and drove most of the online growth.\n- Orders: reason not given.\n\n**Watch next month:** Labour weekend promotion on lunch boxes in October. Priya noted stock arrives 24 October.\n\n**Questions for the team**\n- What caused the return rate to increase from 3.1% to 4.9%?\n- What drove the increase in orders from 3,950 to 4,380?",
+   "checks": [
+    {
+     "id": "numbers-from-the-table",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "no-guessed-causes",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 5,
+    "total": 5,
+    "misses": []
+   },
+   "seconds": 2.52,
+   "tokens": [
+    674,
+    336
+   ],
+   "cached": false
+  },
+  {
+   "example": "02-august",
+   "output": "**Headline:** Wholesale revenue and email subscribers drove growth in August while online store revenue declined.\n\n**What changed:**\n- Wholesale revenue: $47,200 up from $34,200 (+38.0%)\n- Email subscribers: 18,940 up from 17,700 (+7.0%)\n- Online store revenue: $161,900 down from $172,300 (-6.0%)\n- Marketplace (Australia) revenue: $71,800 up from $69,500 (+3.3%)\n- Return rate: 3.1% up from 3.0% (+0.1 pts)\n\n**Why:**\n- Wholesale revenue: Sam said it jumped because Retailer X placed their first order (24 stores).\n- Email subscribers: Anika said the August giveaway with a cooking school brought in most of the new email subscribers.\n- Online store revenue: reason not given.\n- Marketplace (Australia) revenue: reason not given.\n- Return rate: reason not given.\n\n**Watch next month:** Spring email campaign on 8 September.\n\n**Questions for the team:**\n- Why did online store revenue decrease by 6.0% this month?",
+   "checks": [
+    {
+     "id": "numbers-from-the-table",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "no-guessed-causes",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 4,
+    "total": 4,
+    "misses": []
+   },
+   "seconds": 2.5,
+   "tokens": [
+    564,
+    276
+   ],
+   "cached": false
+  },
+  {
+   "example": "03-quiet-month",
+   "output": "**Headline:** July was a steady month for revenue and operations across channels.\n\n**What changed**\n- Wholesale revenue: $34,200 (July 2026) from $35,100 (June 2026), a change of -2.6%.\n- Return rate: 3.0% (July 2026) from 3.2% (June 2026), a change of -0.2 pts.\n- Online store revenue: $172,300 (July 2026) from $169,800 (June 2026), a change of +1.5%.\n- Orders: 4,210 (July 2026) from 4,150 (June 2026), a change of +1.4%.\n- Marketplace (Australia) revenue: $69,500 (July 2026) from $68,900 (June 2026), a change of +0.9%.\n\n**Why:**\n- Wholesale revenue: reason not given.\n- Return rate: reason not given.\n- Online store revenue: reason not given.\n- Orders: reason not given.\n- Marketplace (Australia) revenue: reason not given.\n\n**Watch next month:** Priya noted that the first wholesale order from Retailer X is expected in August.\n\n**Questions for the team:** \n- Why did wholesale revenue decrease while online and marketplace revenues increased?\n- What drove the improvements in online store revenue, orders, return rate, and marketplace revenue this month?",
+   "checks": [
+    {
+     "id": "numbers-from-the-table",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "no-guessed-causes",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 2,
+    "total": 2,
+    "misses": []
+   },
+   "seconds": 2.64,
+   "tokens": [
+    540,
+    358
+   ],
+   "cached": false
+  }
+ ]
+}

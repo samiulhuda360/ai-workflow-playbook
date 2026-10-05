@@ -1,0 +1,9 @@
+expect:
+  - {type: equals, path: po_number, value: "PO-20452"}
+  - {type: equals, path: needs_person, value: true}
+  - type: rows
+    path: lines
+    key: sku
+    rows:
+      - {sku: "TW-LBX-01", qty: 2400, status: price_change}
+      - {sku: "TW-LBX-02", qty: 3600}

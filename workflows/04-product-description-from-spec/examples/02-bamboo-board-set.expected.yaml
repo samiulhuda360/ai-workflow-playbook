@@ -1,0 +1,2 @@
+expect:
+  - {type: mentions, values: ["40 x 28", "certified", "hand wash", "juice groove"]}

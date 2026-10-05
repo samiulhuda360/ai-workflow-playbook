@@ -1,0 +1,5 @@
+expect:
+  - {type: equals, path: reviews_read, value: 20}
+  - {type: ids, path: "needs_person[].id", values: [R05, R13, R18]}
+  - {type: no_extra_ids, path: "needs_person[].id", values: [R05, R13, R18]}
+  - {type: mentions, values: ["latch", "leak"]}

@@ -1,0 +1,230 @@
+{
+ "workflow": "01-supplier-email-to-order-update",
+ "title": "Supplier email → order update",
+ "model": "gemini-flash-latest",
+ "date": "2026-10-05",
+ "examples": [
+  {
+   "example": "01-delay",
+   "output": "### Summary\n\n* **PO-20417**: 800 pcs of TW-BTL-500 remain on schedule to ship on 10 October 2026.\n* 1,200 pcs of TW-BTL-750 are delayed due to line maintenance, with the ready date pushed from 10 October to 24 October 2026.\n* The supplier has requested confirmation of the new ready date and offered the option of a split shipment.\n\n```json\n{\n  \"supplier\": \"Supplier A Manufacturing Co.\",\n  \"po_number\": \"PO-20417\",\n  \"lines\": [\n    {\n      \"sku\": \"TW-BTL-750\",\n      \"qty\": 1200,\n      \"status\": \"delayed\",\n      \"new_date\": \"2026-10-24\",\n      \"date_text\": \"24 October\",\n      \"note\": \"Ready date delayed from 10 October due to scheduled maintenance on powder-coating line; supplier offered option to split shipment\"\n    },\n    {\n      \"sku\": \"TW-BTL-500\",\n      \"qty\": 800,\n      \"status\": \"confirmed\",\n      \"new_date\": \"2026-10-10\",\n      \"date_text\": \"10 October\",\n      \"note\": \"Not affected; shipping as planned\"\n    }\n  ],\n  \"needs_person\": true,\n  \"needs_person_reason\": \"Ready date for TW-BTL-750 delayed to 24 October; supplier requires confirmation of the date and whether a split shipment is needed.\",\n  \"reply_draft\": \"Hi Lily,\\n\\nThank you for the update on PO-20417. We note that the 800 pcs of TW-BTL-500 are on schedule to ship on 10 October, and that the 1,200 pcs of TW-BTL-750 are delayed to 24 October.\\n\\nI will check with our team regarding the proposed 24 October date and whether we require a split shipment, and will get back to you shortly.\\n\\nBest regards,\\nOperations Team\"\n}\n```",
+   "checks": [
+    {
+     "id": "json",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "has-supplier",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "nothing-invented",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "no-commitments",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 4,
+    "total": 4,
+    "misses": []
+   },
+   "seconds": 26.2,
+   "tokens": [
+    956,
+    518
+   ],
+   "cached": false
+  },
+  {
+   "example": "02-partial-shipment",
+   "output": "### Summary\n\n* **PO-20388 (MB-SM):** All 5,000 units were dispatched today under consignment HF-77812.\n* **PO-20388 (MB-LG):** Partial dispatch of 2,000 units today due to a board shortage.\n* **Remaining Balance:** The remaining 1,000 units of MB-LG are scheduled to follow by the end of next week; supplier asked if the balance is urgent.\n\n```json\n{\n  \"supplier\": \"Supplier B Packaging Ltd\",\n  \"po_number\": \"PO-20388\",\n  \"lines\": [\n    {\n      \"sku\": \"MB-SM\",\n      \"qty\": 5000,\n      \"status\": \"shipped\",\n      \"new_date\": null,\n      \"date_text\": \"today\",\n      \"note\": \"Dispatched with freight forwarder under consignment HF-77812\"\n    },\n    {\n      \"sku\": \"MB-LG\",\n      \"qty\": 3000,\n      \"status\": \"partial\",\n      \"new_date\": null,\n      \"date_text\": \"by the end of next week\",\n      \"note\": \"2,000 units dispatched today due to board shortage; remaining 1,000 units to follow\"\n    }\n  ],\n  \"needs_person\": true,\n  \"needs_person_reason\": \"MB-LG has a split shipment with 1,000 units delayed until the end of next week, and the supplier has asked if the balance is urgent.\",\n  \"reply_draft\": \"Kia ora Aroha,\\n\\nThank you for the update on PO-20388 and for providing consignment number HF-77812.\\n\\nWe note that the full 5,000 units of MB-SM and 2,000 units of MB-LG have been dispatched today, and that the remaining 1,000 units of MB-LG are expected by the end of next week due to the board shortage. I will check with our team regarding the timeline and urgency for the balance and come back to you shortly.\\n\\nNgā mihi,\"\n}\n```",
+   "checks": [
+    {
+     "id": "json",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "has-supplier",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "nothing-invented",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "no-commitments",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 4,
+    "total": 4,
+    "misses": []
+   },
+   "seconds": 11.16,
+   "tokens": [
+    932,
+    510
+   ],
+   "cached": false
+  },
+  {
+   "example": "03-price-change",
+   "output": "### Summary\n\n* **PO-20452 price increase requested:** Supplier A requested a unit price increase for TW-LBX-01 (2,400 pcs) from USD 3.10 to USD 3.29 due to rising resin costs.\n* **TW-LBX-02 unchanged:** Unit price for TW-LBX-02 (3,600 pcs) remains USD 1.45.\n* **Decision deadline:** Production begins on 19 October 2026; supplier requires confirmation before that date.\n\n```json\n{\n  \"supplier\": \"Supplier A Manufacturing Co.\",\n  \"po_number\": \"PO-20452\",\n  \"lines\": [\n    {\n      \"sku\": \"TW-LBX-01\",\n      \"qty\": 2400,\n      \"status\": \"price_change\",\n      \"new_date\": null,\n      \"date_text\": null,\n      \"note\": \"Unit price adjustment requested from USD 3.10 to USD 3.29; production scheduled to start 19 October 2026\"\n    },\n    {\n      \"sku\": \"TW-LBX-02\",\n      \"qty\": 3600,\n      \"status\": \"confirmed\",\n      \"new_date\": null,\n      \"date_text\": null,\n      \"note\": \"Unit price confirmed at USD 1.45; production scheduled to start 19 October 2026\"\n    }\n  ],\n  \"needs_person\": true,\n  \"needs_person_reason\": \"Supplier is requesting approval for a price increase on TW-LBX-01 from USD 3.10 to USD 3.29 prior to starting production.\",\n  \"reply_draft\": \"Hi Kevin,\\n\\nThank you for the update regarding PO-20452. We have noted the proposed price change for TW-LBX-01 to USD 3.29 and that TW-LBX-02 remains at USD 1.45, with production planned to begin on 19 October 2026. We will review this internally with our team and get back to you shortly.\\n\\nBest regards,\\nOperations Team\"\n}\n```",
+   "checks": [
+    {
+     "id": "json",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "has-supplier",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "nothing-invented",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "no-commitments",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 4,
+    "total": 4,
+    "misses": []
+   },
+   "seconds": 32.19,
+   "tokens": [
+    948,
+    517
+   ],
+   "cached": false
+  },
+  {
+   "example": "04-substitution",
+   "output": "### Summary\n\n* **PO-20460 (TW-LID-SAGE):** The supplier cannot obtain Sage green pigment in time for the 1,500 units.\n* **Proposed Options:** They have offered Olive green (Pantone 5763 C) to maintain the 2 November 2026 ship date, or keeping Sage green with an estimated three-week delay.\n* **Action Required:** We need to decide whether to accept the colour substitution or take the delay.\n\n```json\n{\n  \"supplier\": \"supplier-a.example\",\n  \"po_number\": \"PO-20460\",\n  \"lines\": [\n    {\n      \"sku\": \"TW-LID-SAGE\",\n      \"qty\": 1500,\n      \"status\": \"substitution\",\n      \"new_date\": \"2026-11-02\",\n      \"date_text\": \"2 November 2026\",\n      \"note\": \"Supplier offered Olive green (Pantone 5763 C) to maintain the 2 November 2026 ship date; waiting for Sage green delays shipment by about three weeks.\"\n    }\n  ],\n  \"needs_person\": true,\n  \"needs_person_reason\": \"Supplier requires a decision on whether to accept a colour substitution (Olive green) or an approximate 3-week shipment delay for Sage green.\",\n  \"reply_draft\": \"Hi Lily,\\n\\nThank you for letting us know. We understand that due to pigment availability for PO-20460, you are offering Olive green (Pantone 5763 C) for the 1,500 pcs of TW-LID-SAGE to keep the 2 November 2026 ship date, or a delay of about three weeks if we wait for Sage green.\\n\\nWe will review these options with our team and get back to you as soon as possible with our decision.\\n\\nBest regards,\\nOperations Team\"\n}\n```",
+   "checks": [
+    {
+     "id": "json",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "has-supplier",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "nothing-invented",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "no-commitments",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 3,
+    "total": 3,
+    "misses": []
+   },
+   "seconds": 18.1,
+   "tokens": [
+    913,
+    452
+   ],
+   "cached": false
+  },
+  {
+   "example": "05-confirmation",
+   "output": "### Summary\n\n* Supplier C Homewares confirmed PO-20471 for 600 units of TW-BRD-M and 400 units of TW-BRD-L.\n* The estimated departure date from Brisbane is 14 November 2026.\n* This is a routine confirmation, so no manual approval or intervention is required.\n\n### JSON Data\n\n```json\n{\n  \"supplier\": \"Supplier C Homewares Pty Ltd\",\n  \"po_number\": \"PO-20471\",\n  \"lines\": [\n    {\n      \"sku\": \"TW-BRD-M\",\n      \"qty\": 600,\n      \"status\": \"confirmed\",\n      \"new_date\": \"2026-11-14\",\n      \"date_text\": \"14 November 2026\",\n      \"note\": null\n    },\n    {\n      \"sku\": \"TW-BRD-L\",\n      \"qty\": 400,\n      \"status\": \"confirmed\",\n      \"new_date\": \"2026-11-14\",\n      \"date_text\": \"14 November 2026\",\n      \"note\": null\n    }\n  ],\n  \"needs_person\": false,\n  \"needs_person_reason\": null,\n  \"reply_draft\": \"Hi team,\\n\\nThank you for confirming PO-20471. We have noted the estimated departure date of 14 November 2026 from Brisbane, and we look forward to receiving the packing list and invoice once the goods have shipped.\\n\\nKind regards,\\nOperations Team\"\n}\n```",
+   "checks": [
+    {
+     "id": "json",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "has-supplier",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "nothing-invented",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "no-commitments",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 4,
+    "total": 4,
+    "misses": []
+   },
+   "seconds": 13.53,
+   "tokens": [
+    894,
+    383
+   ],
+   "cached": false
+  },
+  {
+   "example": "06-not-an-order",
+   "output": "### Summary\n\n* This email is not about an order; it is an invitation to visit the supplier's booth at the autumn trade fair (15–19 October).\n* No purchase orders, SKUs, or order updates are mentioned.\n\n### Order Data\n\n```json\n{\n  \"supplier\": \"Supplier A Manufacturing Co.\",\n  \"po_number\": null,\n  \"lines\": [],\n  \"needs_person\": false,\n  \"needs_person_reason\": null,\n  \"reply_draft\": \"\"\n}\n```",
+   "checks": [
+    {
+     "id": "json",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "has-supplier",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "nothing-invented",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "no-commitments",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 3,
+    "total": 3,
+    "misses": []
+   },
+   "seconds": 5.2,
+   "tokens": [
+    865,
+    118
+   ],
+   "cached": false
+  }
+ ]
+}

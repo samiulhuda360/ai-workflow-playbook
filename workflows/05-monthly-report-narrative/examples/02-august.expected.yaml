@@ -1,0 +1,3 @@
+expect:
+  # online revenue fell 6% and nobody explained it
+  - {type: mentions, values: ["+38.0%", "Retailer X", "-6.0%", "reason not given"]}

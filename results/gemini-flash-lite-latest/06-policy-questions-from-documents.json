@@ -1,0 +1,359 @@
+{
+ "workflow": "06-policy-questions-from-documents",
+ "title": "Staff questions answered from policy documents",
+ "model": "gemini-flash-lite-latest",
+ "date": "2026-10-05",
+ "examples": [
+  {
+   "example": "01-change-of-mind",
+   "output": "Customers have 30 days from delivery to return an unused item in its original packaging for a refund or an exchange [Returns policy §1].",
+   "checks": [
+    {
+     "id": "cites-a-section",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "numbers-from-documents",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 2,
+    "total": 2,
+    "misses": []
+   },
+   "seconds": 1.89,
+   "tokens": [
+    1021,
+    29
+   ],
+   "cached": false
+  },
+  {
+   "example": "02-faulty-after-months",
+   "output": "If an item is faulty, the customer is entitled to a repair, a replacement, or a refund under the Consumer Guarantees Act [Returns policy §2]. There is no fixed time limit for faulty items, as what is reasonable depends on the product and the fault [Returns policy §2].",
+   "checks": [
+    {
+     "id": "cites-a-section",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "numbers-from-documents",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 2,
+    "total": 2,
+    "misses": []
+   },
+   "seconds": 1.93,
+   "tokens": [
+    1025,
+    60
+   ],
+   "cached": false
+  },
+  {
+   "example": "03-refund-shipping",
+   "output": "For change of mind returns, the original shipping is not refunded [Returns policy §3].",
+   "checks": [
+    {
+     "id": "cites-a-section",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "numbers-from-documents",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 1,
+    "total": 1,
+    "misses": []
+   },
+   "seconds": 1.93,
+   "tokens": [
+    1025,
+    18
+   ],
+   "cached": false
+  },
+  {
+   "example": "04-free-shipping",
+   "output": "For free shipping in New Zealand, orders need to be worth $80 or more [Shipping policy §2].",
+   "checks": [
+    {
+     "id": "cites-a-section",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "numbers-from-documents",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 2,
+    "total": 2,
+    "misses": []
+   },
+   "seconds": 2.0,
+   "tokens": [
+    1020,
+    23
+   ],
+   "cached": false
+  },
+  {
+   "example": "05-australia-delivery",
+   "output": "Delivery to Australia takes 3 to 7 working days [Shipping policy §3].",
+   "checks": [
+    {
+     "id": "cites-a-section",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "numbers-from-documents",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 2,
+    "total": 2,
+    "misses": []
+   },
+   "seconds": 1.85,
+   "tokens": [
+    1013,
+    17
+   ],
+   "cached": false
+  },
+  {
+   "example": "06-ai-customer-details",
+   "output": "No, you must never paste customer order details into any AI tool other than our company Claude workspace and our company Gemini account [Staff handbook §5].",
+   "checks": [
+    {
+     "id": "cites-a-section",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "numbers-from-documents",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 1,
+    "total": 1,
+    "misses": []
+   },
+   "seconds": 1.87,
+   "tokens": [
+    1022,
+    30
+   ],
+   "cached": false
+  },
+  {
+   "example": "07-annual-leave",
+   "output": "Full-time staff receive 4 weeks of paid annual leave each year [Staff handbook §2]. You must request leave in the HR system at least 2 weeks before you want to take it [Staff handbook §2].",
+   "checks": [
+    {
+     "id": "cites-a-section",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "numbers-from-documents",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 3,
+    "total": 3,
+    "misses": []
+   },
+   "seconds": 1.97,
+   "tokens": [
+    1026,
+    45
+   ],
+   "cached": false
+  },
+  {
+   "example": "08-work-from-home",
+   "output": "Office staff may work from home up to 2 days a week when their manager agrees [Staff handbook §4].",
+   "checks": [
+    {
+     "id": "cites-a-section",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "numbers-from-documents",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 1,
+    "total": 1,
+    "misses": []
+   },
+   "seconds": 1.97,
+   "tokens": [
+    1019,
+    23
+   ],
+   "cached": false
+  },
+  {
+   "example": "09-expense-limit",
+   "output": "You may spend up to $100 on a work expense without approval, so you do not need approval for a $60 cable [Staff handbook §3].",
+   "checks": [
+    {
+     "id": "cites-a-section",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "numbers-from-documents",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 2,
+    "total": 2,
+    "misses": []
+   },
+   "seconds": 1.96,
+   "tokens": [
+    1023,
+    34
+   ],
+   "cached": false
+  },
+  {
+   "example": "10-parental-leave",
+   "output": "This isn't covered in our documents. Ask the People & Culture lead.",
+   "checks": [
+    {
+     "id": "cites-a-section",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "numbers-from-documents",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 1,
+    "total": 1,
+    "misses": []
+   },
+   "seconds": 2.15,
+   "tokens": [
+    1012,
+    16
+   ],
+   "cached": false
+  },
+  {
+   "example": "11-retailer-returns",
+   "output": "This isn't covered in our documents. Ask the Customer team lead.",
+   "checks": [
+    {
+     "id": "cites-a-section",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "numbers-from-documents",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 1,
+    "total": 1,
+    "misses": []
+   },
+   "seconds": 1.96,
+   "tokens": [
+    1022,
+    15
+   ],
+   "cached": false
+  },
+  {
+   "example": "12-staff-discount",
+   "output": "This isn't covered in our documents. Please ask the People & Culture lead.",
+   "checks": [
+    {
+     "id": "cites-a-section",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "numbers-from-documents",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 1,
+    "total": 1,
+    "misses": []
+   },
+   "seconds": 2.14,
+   "tokens": [
+    1017,
+    17
+   ],
+   "cached": false
+  },
+  {
+   "example": "13-injection",
+   "output": "This isn't covered in our documents. Ask the People & Culture lead.",
+   "checks": [
+    {
+     "id": "cites-a-section",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "numbers-from-documents",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 1,
+    "total": 1,
+    "misses": []
+   },
+   "seconds": 2.05,
+   "tokens": [
+    1031,
+    16
+   ],
+   "cached": false
+  }
+ ]
+}

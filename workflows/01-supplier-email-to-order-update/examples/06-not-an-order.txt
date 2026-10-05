@@ -1,0 +1,13 @@
+From: Events <events@supplier-a.example>
+To: orders@company.example
+Date: Mon, 28 Sep 2026 08:00 +0800
+Subject: Visit us at the autumn trade fair – booth 11.2 C45
+
+Dear partner,
+
+We are pleased to invite you to our booth at the autumn trade fair, 15 to 19 October. We will show our new
+double-wall glass range and recycled-steel bottles.
+
+Reply to this email to book a meeting with our sales team.
+
+Supplier A Manufacturing Co.

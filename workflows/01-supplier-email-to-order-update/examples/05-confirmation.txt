@@ -1,0 +1,18 @@
+From: Orders <orders@supplier-c.example>
+To: orders@company.example
+Date: Wed, 30 Sep 2026 10:02 +1000
+Subject: Order confirmation PO-20471
+
+Hello,
+
+Thank you for your order. We confirm PO-20471 as follows:
+
+TW-BRD-M  bamboo board, medium  600 pcs
+TW-BRD-L  bamboo board, large   400 pcs
+
+Estimated time of departure: 14 November 2026 from Brisbane.
+
+We will send the packing list and invoice once the goods have shipped.
+
+Kind regards,
+Supplier C Homewares Pty Ltd

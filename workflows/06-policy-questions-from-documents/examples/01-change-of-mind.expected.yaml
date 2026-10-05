@@ -1,0 +1,7 @@
+expect:
+- type: cites
+  values:
+  - Returns policy §1
+- type: mentions
+  values:
+  - 30 days

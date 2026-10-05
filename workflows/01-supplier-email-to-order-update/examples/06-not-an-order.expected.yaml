@@ -1,0 +1,4 @@
+expect:
+  - {type: equals, path: po_number, value: null}
+  - {type: equals, path: needs_person, value: false}
+  - {type: count, path: "lines[]", value: 0}

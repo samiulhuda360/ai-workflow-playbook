@@ -1,0 +1,5 @@
+expect:
+  - {type: count, path: "actions[]", value: 2}
+  - {type: ids, path: "actions[].owner", values: [Mere, Sam]}
+  - {type: mentions, values: ["lunch box"]}
+  - {type: excludes, path: "decisions[].text", values: ["run a 20% off sale", "run the 20% off", "will run the bottle sale"]}

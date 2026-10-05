@@ -1,0 +1,220 @@
+{
+  "name": "Weekly competitor price check",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "weeksInterval": 1,
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "id": "5206a939-0002-5e21-805b-3e52e62f283c",
+      "name": "Every Monday at 8am",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "0ca2d1d0-500a-59e0-a578-73ae351aaf37",
+      "name": "Run now",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "// The products to watch. last_seen_price is what the competitor charged at the last check.\nconst base = $env.PRICE_WATCH_BASE_URL || 'http://127.0.0.1:8765';\nconst products = [\n  { sku: 'BTL-750', name: '750 ml insulated bottle', our_price: 44.90, last_seen_price: 44.90, url: `${base}/bottle-750.html` },\n  { sku: 'BTL-500', name: '500 ml insulated bottle', our_price: 34.90, last_seen_price: 34.90, url: `${base}/bottle-500.html` },\n  { sku: 'LBX-01', name: 'Kids bento lunch box', our_price: 29.90, last_seen_price: 24.00, url: `${base}/lunch-box.html` },\n  { sku: 'BRD-SET', name: 'Bamboo board set', our_price: 59.00, last_seen_price: 54.00, url: `${base}/board-set.html` },\n];\nreturn products.map(p => ({ json: p }));"
+      },
+      "id": "9fba88ff-5fc4-5806-834b-217fbf76f86a",
+      "name": "Products to watch",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text",
+              "outputPropertyName": "data"
+            }
+          },
+          "timeout": 15000
+        }
+      },
+      "id": "c3cf6d6b-34a8-5f70-b588-4ea175b239a1",
+      "name": "Fetch competitor page",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        100
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "extractHtmlContent",
+        "sourceData": "json",
+        "dataPropertyName": "data",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "price",
+              "cssSelector": "[data-price]",
+              "returnValue": "attribute",
+              "attribute": "data-price"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0f33e411-d907-5046-9971-a31d637fecaa",
+      "name": "Read the price",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        660,
+        100
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "language": "javaScript",
+        "jsCode": "// Plain rules, no AI: reading a number from a page and comparing it is not a job for a language model.\nconst p = $('Products to watch').item.json;\nconst price = parseFloat($json.price);\nconst row = { ...p, competitor_price: Number.isFinite(price) ? price : null, alerts: [] };\nif (row.competitor_price === null) {\n  row.alerts.push('Price not found on the page (out of stock or the page changed): check by hand.');\n} else {\n  const vsUs = (row.competitor_price - p.our_price) / p.our_price;\n  const vsLast = (row.competitor_price - p.last_seen_price) / p.last_seen_price;\n  if (vsUs <= -0.10) row.alerts.push(`Competitor is ${Math.round(-vsUs * 100)}% cheaper than us.`);\n  if (Math.abs(vsLast) >= 0.05) {\n    row.alerts.push(`Competitor price ${vsLast > 0 ? 'rose' : 'fell'} ${Math.round(Math.abs(vsLast) * 100)}% since the last check.`);\n  }\n}\nreturn { json: row };"
+      },
+      "id": "8bc581b9-391c-5898-96de-48c1405ca8e7",
+      "name": "Compare",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        100
+      ],
+      "notes": "Rules, not AI",
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "// One message for the team: what changed, what to look at. Nothing changes our prices automatically.\nconst rows = $input.all().map(i => i.json);\nconst flagged = rows.filter(r => r.alerts.length);\nconst lines = flagged.map(r => `- ${r.name} (ours $${r.our_price.toFixed(2)}, theirs ${r.competitor_price === null ? 'not found' : '$' + r.competitor_price.toFixed(2)}): ${r.alerts.join(' ')}`);\nconst text = flagged.length\n  ? `Price check: ${flagged.length} of ${rows.length} products need a look.\\n${lines.join('\\n')}`\n  : `Price check: no changes across ${rows.length} products.`;\nreturn [{ json: { checked: rows.length, flagged: flagged.length, summary: text, rows } }];"
+      },
+      "id": "ed1185a6-cce0-5617-8293-e1fffca7c8c4",
+      "name": "Weekly summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        100
+      ],
+      "notes": "Swap the output for an email or Slack node",
+      "notesInFlow": true
+    }
+  ],
+  "connections": {
+    "Every Monday at 8am": {
+      "main": [
+        [
+          {
+            "node": "Products to watch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run now": {
+      "main": [
+        [
+          {
+            "node": "Products to watch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Products to watch": {
+      "main": [
+        [
+          {
+            "node": "Fetch competitor page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch competitor page": {
+      "main": [
+        [
+          {
+            "node": "Read the price",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read the price": {
+      "main": [
+        [
+          {
+            "node": "Compare",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compare": {
+      "main": [
+        [
+          {
+            "node": "Weekly summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": [],
+  "active": false,
+  "id": "aae8400903565600",
+  "versionId": "1da50820-b9db-5f53-9f2d-b150b080fa75",
+  "staticData": null,
+  "description": "Checks competitor prices every Monday and lists what changed. Uses no AI on purpose."
+}

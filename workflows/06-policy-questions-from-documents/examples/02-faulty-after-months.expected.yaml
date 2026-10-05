@@ -1,0 +1,7 @@
+expect:
+- type: cites
+  values:
+  - Returns policy §2
+- type: mentions
+  values:
+  - Consumer Guarantees Act

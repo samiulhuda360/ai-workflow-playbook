@@ -1,0 +1,82 @@
+{
+ "workflow": "03-customer-reviews-to-themes",
+ "title": "Customer reviews → themes and complaints",
+ "model": "gemini-flash-lite-latest",
+ "date": "2026-10-05",
+ "examples": [
+  {
+   "example": "01-drink-bottles",
+   "output": "### Summary\n\n1. **Lid and leakage issues are the most common complaint**, appearing across multiple reviews (R02, R06, R09, R17) with customers noting leaks when bottles are laid on their side or filled.\n2. **Safety incidents require urgent attention**, including a burn from hot tea (R07), a finger pinched by the lid (R11), a cut lip from a sharp rim on arrival (R15), and black mould under the silicone seal (R21).\n3. **Paint durability and chipping** (R03, R13, R23) are frequent quality complaints, with some customers reporting paint flaking near the mouthpiece.\n\n```json\n{\n  \"reviews_read\": 24,\n  \"themes\": [\n    {\n      \"theme\": \"excellent temperature retention\",\n      \"sentiment\": \"positive\",\n      \"count\": 6,\n      \"review_ids\": [\"R01\", \"R04\", \"R10\", \"R16\", \"R19\", \"R24\"],\n      \"quote\": \"Keeps water icy cold all day at work. Best bottle I've owned.\"\n    },\n    {\n      \"theme\": \"lid leaks\",\n      \"sentiment\": \"negative\",\n      \"count\": 4,\n      \"review_ids\": [\"R02\", \"R06\", \"R09\", \"R17\"],\n      \"quote\": \"The lid leaks if the bottle lies on its side in my bag. Ruined a notebook.\"\n    },\n    {\n      \"theme\": \"paint chipping and flaking\",\n      \"sentiment\": \"negative\",\n      \"count\": 4,\n      \"review_ids\": [\"R03\", \"R13\", \"R23\", \"R24\"],\n      \"quote\": \"Paint chipped after a month though.\"\n    },\n    {\n      \"theme\": \"mould under silicone seal\",\n      \"sentiment\": \"negative\",\n      \"count\": 1,\n      \"review_ids\": [\"R21\"],\n      \"quote\": \"Found black mould under the silicone seal after two weeks even though I wash it daily.\"\n    },\n    {\n      \"theme\": \"safety and injury concerns\",\n      \"sentiment\": \"negative\",\n      \"count\": 3,\n      \"review_ids\": [\"R07\", \"R11\", \"R15\"],\n      \"quote\": \"I filled it with hot tea and the lid popped off when I opened it. The tea splashed and burned my hand. Please warn people.\"\n    }\n  ],\n  \"needs_person\": [\n    {\n      \"id\": \"R07\",\n      \"reason\": \"Customer suffered a burn on their hand when the lid popped off filled hot tea and requested safety warnings.\"\n    },\n    {\n      \"id\": \"R11\",\n      \"reason\": \"Child's finger was badly pinched by the flip lid snapping shut.\"\n    },\n    {\n      \"id\": \"R15\",\n      \"reason\": \"Product arrived with a sharp chip on the rim, resulting in a child cutting their lip.\"\n    },\n    {\n      \"id\": \"R21\",\n      \"reason\": \"Customer found black mould under the silicone seal after two weeks despite daily washing.\"\n    }\n  ],\n  \"suggested_actions\": [\n    \"Investigate lid design and sealing mechanisms to prevent leakage when bottles are stored horizontally.\",\n    \"Improve paint durability and finish quality to stop chipping and flaking near the mouthpiece and base.\",\n    \"Review manufacturing and quality control regarding rim chipping and seal hygiene to address safety risks.\"\n  ]\n}\n```",
+   "checks": [
+    {
+     "id": "json",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "has-count-and-themes",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "quotes-word-for-word",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "flagged-ids-exist",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 8,
+    "total": 8,
+    "misses": []
+   },
+   "seconds": 3.95,
+   "tokens": [
+    1170,
+    821
+   ],
+   "cached": false
+  },
+  {
+   "example": "02-lunch-boxes",
+   "output": "### Summary for the Team\n\n1. **Latch durability and usability:** Multiple customers report that the latch snaps easily (within days or weeks) or is too stiff for young children (e.g., 5-year-olds) to open independently.\n2. **Leakage issues:** The compartments, particularly the yoghurt and sauce sections, frequently leak, leading to mixed reviews regarding food separation and soggy sandwiches.\n3. **Critical health and safety reports:** Urgent reviews flag an allergic skin rash from the silicone seal, chemical smells causing children to feel sick, and a customer threatening a consumer regulator complaint regarding refused refunds for broken latches.\n\n```json\n{\n  \"reviews_read\": 20,\n  \"themes\": [\n    {\n      \"theme\": \"latch durability\",\n      \"sentiment\": \"negative\",\n      \"count\": 5,\n      \"review_ids\": [\"R02\", \"R07\", \"R14\", \"R18\", \"R20\"],\n      \"quote\": \"The latch broke after three weeks.\"\n    },\n    {\n      \"theme\": \"compartment leaks\",\n      \"sentiment\": \"negative\",\n      \"count\": 4,\n      \"review_ids\": [\"R03\", \"R09\", \"R15\"],\n      \"quote\": \"the yoghurt compartment leaks a bit though.\"\n    },\n    {\n      \"theme\": \"child usability\",\n      \"sentiment\": \"negative\",\n      \"count\": 2,\n      \"review_ids\": [\"R06\", \"R14\"],\n      \"quote\": \"My 5 year old can't open the latch by himself.\"\n    },\n    {\n      \"theme\": \"size and compartments\",\n      \"sentiment\": \"positive\",\n      \"count\": 2,\n      \"review_ids\": [\"R01\", \"R08\"],\n      \"quote\": \"Four compartments are perfect for my two kids' lunches.\"\n    },\n    {\n      \"theme\": \"cleaning and washability\",\n      \"sentiment\": \"mixed\",\n      \"count\": 4,\n      \"review_ids\": [\"R04\", \"R12\", \"R17\", \"R20\"],\n      \"quote\": \"Wish it was dishwasher safe.\"\n    },\n    {\n      \"theme\": \"health and safety reactions\",\n      \"sentiment\": \"negative\",\n      \"count\": 2,\n      \"review_ids\": [\"R05\", \"R13\"],\n      \"quote\": \"My hands came up in a red itchy rash every time I handled the silicone seal.\"\n    }\n  ],\n  \"needs_person\": [\n    {\n      \"id\": \"R05\",\n      \"reason\": \"Customer reports a red itchy rash every time they handled the silicone seal, indicating a potential allergic reaction or material safety issue.\"\n    },\n    {\n      \"id\": \"R13\",\n      \"reason\": \"Customer reports a strong chemical smell and that both kids felt sick after eating from the lunch box, indicating a contamination or toxicity risk.\"\n    },\n    {\n      \"id\": \"R18\",\n      \"reason\": \"Customer is threatening to report the company to the consumer regulator following a broken latch and refused refund.\"\n    }\n  ],\n  \"suggested_actions\": [\n    \"Investigate the material composition of the silicone seal and the reported chemical odors/illness.\",\n    \"Review manufacturing quality control for the latches to address frequent breakage.\",\n    \"Improve compartment sealing to prevent leaks between sections.\",\n    \"Address customer service training regarding refund policies and escalated consumer complaints.\"\n  ]\n}\n```",
+   "checks": [
+    {
+     "id": "json",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "has-count-and-themes",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "quotes-word-for-word",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "flagged-ids-exist",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 7,
+    "total": 7,
+    "misses": []
+   },
+   "seconds": 4.01,
+   "tokens": [
+    850,
+    804
+   ],
+   "cached": false
+  }
+ ]
+}

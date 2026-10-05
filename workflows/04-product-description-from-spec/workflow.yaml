@@ -1,0 +1,51 @@
+title: Product description from a spec sheet
+team: Marketing and ecommerce
+output: json
+knowledge: [knowledge/brand-guide.md]
+checks:
+  - id: json
+    type: json_block
+  - id: all-parts
+    type: required
+    fields: [website.title, website.description, website.bullets, marketplace.title, marketplace.bullets]
+  - id: length-limits
+    type: max_chars
+    limits:
+      website.title: 70
+      website.description: 600
+      "website.bullets[]": 150
+      marketplace.title: 200
+      "marketplace.bullets[]": 250
+  - id: five-bullets-max
+    type: max_items
+    limits: {website.bullets: 5, marketplace.bullets: 5}
+  - id: no-banned-claims
+    # in the copy itself, unless the spec sheet makes the claim
+    type: banned_phrases
+    fields: [website.title, website.description, "website.bullets[]", marketplace.title, "marketplace.bullets[]"]
+    phrases:
+      - "\\bbest\\b"
+      - "#1"
+      - "\\bultimate\\b"
+      - "\\bperfect\\b"
+      - "\\bhealth(y|ier)\\b"
+      - "non-?toxic"
+      - "(chemical|toxin)-free"
+      - "anti-?(bacterial|microbial)"
+      - "\\bhygienic\\b"
+      - "\\b(cures?|prevents?|boosts?|detox)\\b"
+      - "eco-?friendly"
+      - "environmentally friendly"
+      - "\\bsustainab"
+      - "planet-friendly"
+      - "zero waste"
+      - "plastic-free"
+      - "carbon neutral"
+      - "\\bguarantee"
+      - "!"
+  - id: numbers-from-spec
+    # every number in the copy must be in the spec sheet, not just in the brand guide
+    type: numbers_grounded
+    scope: input
+    fields: [website.title, website.description, "website.bullets[]", marketplace.title, "marketplace.bullets[]"]
+    small: 1

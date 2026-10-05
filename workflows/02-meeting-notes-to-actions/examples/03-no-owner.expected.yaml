@@ -1,0 +1,4 @@
+expect:
+  - {type: ids, path: "actions[].owner", values: [Tom, Wiremu]}
+  - {type: no_extra_ids, path: "actions[].owner", values: [Tom, Wiremu, null, ""]}
+  - {type: mentions, values: ["courier", "leave"]}

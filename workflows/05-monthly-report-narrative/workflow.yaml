@@ -1,0 +1,18 @@
+title: Monthly report narrative from a KPI table
+team: Finance and operations
+output: text
+checks:
+  - id: numbers-from-the-table
+    # every number in the commentary must be in the table or the notes
+    type: numbers_grounded
+    small: 5
+  - id: no-guessed-causes
+    # causal words are only allowed where the notes give a reason; this catches the commonest guesses
+    type: banned_phrases
+    phrases:
+      - "likely due to"
+      - "probably (due|because)"
+      - "may have been (caused|driven)"
+      - "possibly (due|because)"
+      - "suggests that"
+      - "!"

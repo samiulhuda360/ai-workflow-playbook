@@ -1,0 +1,16 @@
+title: Staff questions answered from policy documents
+team: Everyone
+output: text
+knowledge:
+  - knowledge/staff-handbook.md
+  - knowledge/returns-policy.md
+  - knowledge/shipping-policy.md
+decline_phrase: "isn't covered in our documents"
+checks:
+  - id: cites-a-section
+    # an answer names its document and section; a "not covered" reply needs no citation
+    type: cites
+    pattern: "\\[(Staff handbook|Returns policy|Shipping policy) §\\d+\\]"
+  - id: numbers-from-documents
+    type: numbers_grounded
+    small: 1

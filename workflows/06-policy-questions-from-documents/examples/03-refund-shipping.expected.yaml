@@ -1,0 +1,4 @@
+expect:
+- type: cites
+  values:
+  - Returns policy §3

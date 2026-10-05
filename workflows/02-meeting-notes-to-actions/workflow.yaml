@@ -1,0 +1,14 @@
+title: Meeting notes → decisions and actions
+team: Everyone
+output: json
+checks:
+  - id: json
+    type: json_block
+  - id: sources-word-for-word
+    # every decision and action points at a sentence that really is in the notes
+    type: quotes_verbatim
+    fields: ["decisions[].source", "actions[].source"]
+  - id: owners-and-dates-in-notes
+    # no owner or deadline that the notes don't contain
+    type: in_source
+    fields: ["actions[].owner", "actions[].due"]

@@ -1,0 +1,136 @@
+{
+ "workflow": "02-meeting-notes-to-actions",
+ "title": "Meeting notes → decisions and actions",
+ "model": "gemini-flash-lite-latest",
+ "date": "2026-10-05",
+ "examples": [
+  {
+   "example": "01-ops-weekly",
+   "output": "Priya, Tom, Mere, and Sam met for the Ops weekly on 5 October 2026 to discuss stock levels, freight costs, and marketplace listings.\nThey decided to shift Australian marketplace replenishment to sea freight starting in November.\nAction items include splitting bottle shipments, booking sea containers, updating product photos, and sending financial reports.\n\n```json\n{\n  \"decisions\": [\n    {\"text\": \"Move Australian marketplace replenishment to sea freight from November.\", \"source\": \"Decision: move Australian marketplace replenishment to sea freight from November.\"}\n  ],\n  \"actions\": [\n    {\n      \"task\": \"Ask the bottle supplier to split the shipment and send 400 by air\",\n      \"owner\": \"Priya\",\n      \"due\": null,\n      \"due_text\": null,\n      \"source\": \"Priya will ask the bottle supplier to split the shipment and send 400 by air.\"\n    },\n    {\n      \"task\": \"Book the November sea container with the freight forwarder\",\n      \"owner\": \"Tom\",\n      \"due\": \"2026-10-09\",\n      \"due_text\": \"Friday 9 October\",\n      \"source\": \"Tom will book the November sea container with the freight forwarder by Friday 9 October.\"\n    },\n    {\n      \"task\": \"Replace the photos and check the title on the 500 ml listing\",\n      \"owner\": \"Mere\",\n      \"due\": null,\n      \"due_text\": \"Wednesday\",\n      \"source\": \"Mere will replace the photos and check the title by Wednesday.\"\n    },\n    {\n      \"task\": \"Send the September freight cost report to Priya\",\n      \"owner\": \"Sam\",\n      \"due\": null,\n      \"due_text\": \"next week\",\n      \"source\": \"Sam will send the September freight cost report to Priya next week.\"\n    }\n  ],\n  \"open_questions\": [\"do we keep the Wellington overflow storage after March?\"]\n}\n```",
+   "checks": [
+    {
+     "id": "json",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "sources-word-for-word",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "owners-and-dates-in-notes",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 8,
+    "total": 8,
+    "misses": []
+   },
+   "seconds": 3.03,
+   "tokens": [
+    669,
+    453
+   ],
+   "cached": false
+  },
+  {
+   "example": "02-marketing-standup",
+   "output": "The spring campaign will feature a picnic theme with a photo shoot scheduled for October 14.\nLeo will share the shot list by Monday, and Anika will complete the newsletter draft for Jess's review by October 8.\nInfluencer gifting is paused for this quarter, and Jess will update the campaign budget sheet today.\n\n```json\n{\n  \"decisions\": [\n    {\n      \"text\": \"The spring campaign will use the picnic theme.\",\n      \"source\": \"We're going with the picnic theme, yeah?\"\n    },\n    {\n      \"text\": \"Influencer gifting will be paused for this quarter.\",\n      \"source\": \"Oh, and the influencer gifting, I think we said we'd pause it this quarter, right?\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"task\": \"Send the shot list to the team before the shoot\",\n      \"owner\": \"Leo\",\n      \"due\": null,\n      \"due_text\": \"Monday\",\n      \"source\": \"Leo, can you send the shot list to the team before the shoot? Like, by Monday?\"\n    },\n    {\n      \"task\": \"Finish the newsletter draft and send it to Jess for review\",\n      \"owner\": \"Anika\",\n      \"due\": \"2026-10-08\",\n      \"due_text\": \"8 October\",\n      \"source\": \"I'll finish the draft and send it to Jess for review by 8 October.\"\n    },\n    {\n      \"task\": \"Update the campaign budget sheet\",\n      \"owner\": \"Jess\",\n      \"due\": \"2026-10-01\",\n      \"due_text\": \"today\",\n      \"source\": \"And I'll update the campaign budget sheet today.\"\n    }\n  ],\n  \"open_questions\": []\n}\n```",
+   "checks": [
+    {
+     "id": "json",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "sources-word-for-word",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "owners-and-dates-in-notes",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 7,
+    "total": 7,
+    "misses": []
+   },
+   "seconds": 3.21,
+   "tokens": [
+    662,
+    419
+   ],
+   "cached": false
+  },
+  {
+   "example": "03-no-owner",
+   "output": "Tom's warehouse catch-up on 30 September 2026 addressed damaged lunch box deliveries and photographing the stock.\nThe team identified a need to improve the returns process and arrange pallet wrap ordering by Friday.\nThey also noted an unresolved staffing gap for Tom's upcoming leave starting on 19 October.\n\n```json\n{\n  \"decisions\": [],\n  \"actions\": [\n    {\n      \"task\": \"Photograph the damaged stock today\",\n      \"owner\": \"Tom\",\n      \"due\": null,\n      \"due_text\": \"today\",\n      \"source\": \"Tom will photograph the damaged stock today.\"\n    },\n    {\n      \"task\": \"Order more pallet wrap by Friday 2 October\",\n      \"owner\": \"Wiremu\",\n      \"due\": \"2026-10-02\",\n      \"due_text\": \"Friday 2 October\",\n      \"source\": \"Wiremu to order more pallet wrap by Friday 2 October.\"\n    }\n  ],\n  \"open_questions\": [\n    \"Someone needs to call the courier and lodge a claim this week.\",\n    \"We should sort out a better returns process at some point.\",\n    \"Nobody knows who is covering the warehouse during Tom's leave from 19 October. To be decided.\"\n  ]\n}\n```",
+   "checks": [
+    {
+     "id": "json",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "sources-word-for-word",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "owners-and-dates-in-notes",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 5,
+    "total": 5,
+    "misses": []
+   },
+   "seconds": 2.6,
+   "tokens": [
+    572,
+    296
+   ],
+   "cached": false
+  },
+  {
+   "example": "04-reversed-decision",
+   "output": "Sales planning meeting held on Tuesday 6 October 2026.\nDiscussed and cancelled the planned drink bottle sale due to supplier delays.\nAgreed to promote lunch boxes instead, with Mere and Sam assigned follow-up tasks.\n\n```json\n{\n  \"decisions\": [\n    {\n      \"text\": \"We decided not to run the bottle sale this year and to promote lunch boxes instead.\",\n      \"source\": \"After discussion we decided not to run the bottle sale this year and to promote lunch boxes instead.\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"task\": \"Draft the lunch box promotion and share it\",\n      \"owner\": \"Mere\",\n      \"due\": \"2026-10-12\",\n      \"due_text\": \"by 12 October\",\n      \"source\": \"Mere will draft the lunch box promotion and share it by 12 October.\"\n    },\n    {\n      \"task\": \"Check the margin on lunch boxes at 15% off and report back\",\n      \"owner\": \"Sam\",\n      \"due\": null,\n      \"due_text\": \"on Thursday\",\n      \"source\": \"Sam will check the margin on lunch boxes at 15% off and report back on Thursday.\"\n    }\n  ],\n  \"open_questions\": []\n}\n```",
+   "checks": [
+    {
+     "id": "json",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "sources-word-for-word",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "owners-and-dates-in-notes",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 5,
+    "total": 5,
+    "misses": []
+   },
+   "seconds": 2.65,
+   "tokens": [
+    587,
+    301
+   ],
+   "cached": false
+  }
+ ]
+}

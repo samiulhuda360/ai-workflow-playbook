@@ -1,0 +1,7 @@
+expect:
+- type: cites
+  values:
+  - Shipping policy §2
+- type: mentions
+  values:
+  - $80

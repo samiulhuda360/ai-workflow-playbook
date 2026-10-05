@@ -1,0 +1,17 @@
+From: Lily Chen <lily.chen@supplier-a.example>
+To: orders@company.example
+Date: Tue, 29 Sep 2026 16:22 +0800
+Subject: PO-20460 lid colour
+
+Hi team,
+
+For PO-20460, our pigment supplier cannot deliver the Sage green masterbatch in time. For the 1,500 pcs of
+TW-LID-SAGE we can offer Olive green instead (photo attached, Pantone 5763 C). The ship date of 2 November 2026
+does not change if you accept Olive.
+
+If you prefer to wait for Sage, the new ship date would be about three weeks later.
+
+Please let us know which option you choose.
+
+Regards,
+Lily

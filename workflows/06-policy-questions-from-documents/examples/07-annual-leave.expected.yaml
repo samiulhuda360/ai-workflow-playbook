@@ -1,0 +1,8 @@
+expect:
+- type: cites
+  values:
+  - Staff handbook §2
+- type: mentions
+  values:
+  - 4 weeks
+  - 2 weeks

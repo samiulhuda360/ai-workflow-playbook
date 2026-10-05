@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      evaluate:
+        description: "Also run the live evaluation (needs the AI_API_KEY secret)"
+        type: boolean
+        default: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]"
+      - run: ruff check playbook tests n8n
+      - run: ruff format --check playbook tests n8n
+      - run: pytest -q
+      - name: Workflow files are valid
+        run: python -m playbook list
+
+  evaluate:
+    # Live model run, only when asked for, so pull requests never spend API credit.
+    if: github.event_name == 'workflow_dispatch' && inputs.evaluate
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e .
+      - run: python -m playbook run all --pause 4
+        env:
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: results
+          path: results/

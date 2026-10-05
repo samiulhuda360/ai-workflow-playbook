@@ -1,0 +1,5 @@
+expect:
+  - {type: count, path: "actions[]", value: 4}
+  - {type: ids, path: "actions[].owner", values: [Priya, Tom, Mere, Sam]}
+  - {type: count, path: "decisions[]", min: 1, max: 2}
+  - {type: mentions, values: ["sea freight", "Wellington"]}

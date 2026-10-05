@@ -1,0 +1,32 @@
+[project]
+name = "ai-workflow-playbook"
+version = "0.1.0"
+description = "Repeatable AI workflows for business teams, with instructions, examples, automatic checks and an evaluation runner."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = ["requests>=2.31", "pyyaml>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["playbook"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+# The long lines are JavaScript for the n8n Code nodes, kept exactly as it runs in n8n.
+"n8n/build_workflows.py" = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

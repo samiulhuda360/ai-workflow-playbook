@@ -1,0 +1,6 @@
+expect:
+  - {type: equals, path: reviews_read, value: 24}
+  # every safety review reaches a person, including the 4-star one (R11)
+  - {type: ids, path: "needs_person[].id", values: [R07, R11, R15, R21]}
+  - {type: no_extra_ids, path: "needs_person[].id", values: [R07, R11, R15, R21, R23]}
+  - {type: mentions, values: ["leak", "paint"]}

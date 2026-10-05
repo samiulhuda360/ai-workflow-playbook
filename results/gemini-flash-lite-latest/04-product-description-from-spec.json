@@ -1,0 +1,149 @@
+{
+ "workflow": "04-product-description-from-spec",
+ "title": "Product description from a spec sheet",
+ "model": "gemini-flash-lite-latest",
+ "date": "2026-10-05",
+ "examples": [
+  {
+   "example": "01-insulated-bottle",
+   "output": "```json\n{\n  \"website\": {\n    \"title\": \"Insulated Drink Bottle 750 ml\",\n    \"description\": \"Meet your daily hydration companion. This 750 ml bottle is made from durable 18/8 stainless steel with a double-wall vacuum insulation to keep drinks cold for 24 hours and hot for 12 hours. The powder coat outer finish feels comfortable in hand. It features a polypropylene lid with a silicone seal, and is BPA-free (tested by an accredited lab, report LAB-2026-04512). Designed to be leak-proof when the lid is closed and the bottle is upright. Backed by a 2-year warranty against manufacturing faults.\",\n    \"bullets\": [\n      \"Keeps drinks cold for 24 hours and hot for 12 hours\",\n      \"Made from durable 18/8 stainless steel with a powder coat finish\",\n      \"BPA-free (tested by an accredited lab, report LAB-2026-04512)\",\n      \"Leak-proof when the lid is closed and the bottle is upright\",\n      \"Hand wash only, not dishwasher safe\"\n    ]\n  },\n  \"marketplace\": {\n    \"title\": \"Insulated Drink Bottle - 750 ml - Harbour Blue, Sand, Sage\",\n    \"bullets\": [\n      \"750 ml capacity, weighing 380 g with a double-wall vacuum insulated 18/8 stainless steel body\",\n      \"Keeps drinks cold for 24 hours and hot for 12 hours based on in-house testing at 20 °C room temperature\",\n      \"Polypropylene lid with a silicone seal; BPA-free (tested by an accredited lab, report LAB-2026-04512)\",\n      \"Leak-proof when the lid is closed and the bottle is upright (note: this 750 ml size does not fit a car cup holder)\",\n      \"Hand wash only, not dishwasher safe, and backed by a 2-year warranty against manufacturing faults\"\n    ]\n  },\n  \"check_before_publishing\": [\n    \"Confirm that the 750 ml bottle not fitting a car cup holder is acceptable to include in marketplace bullet 4, or if it should be omitted.\",\n    \"Confirm that the colour options (Harbour Blue, Sand, Sage) are listed correctly in the marketplace title and match available inventory.\"\n  ]\n}\n```",
+   "checks": [
+    {
+     "id": "json",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "all-parts",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "length-limits",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "five-bullets-max",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "no-banned-claims",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "numbers-from-spec",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 4,
+    "total": 4,
+    "misses": []
+   },
+   "seconds": 3.27,
+   "tokens": [
+    1043,
+    544
+   ],
+   "cached": false
+  },
+  {
+   "example": "02-bamboo-board-set",
+   "output": "```json\n{\n  \"website\": {\n    \"title\": \"Bamboo Chopping Board Set\",\n    \"description\": \"Prepare meals with a durable bamboo chopping board set made to last. This set includes a medium board for everyday prep and a large board with a juice groove for carving roasts. Both are crafted from Moso bamboo from certified managed forests (certificate CERT-000000) and finished with food-grade mineral oil. They are easy to clean by hand and ready for daily kitchen use. Backed by a 1 year warranty.\",\n    \"bullets\": [\n      \"Medium board measures 30 x 20 cm and is 1.8 cm thick\",\n      \"Large board measures 40 x 28 cm, 1.8 cm thick, with a juice groove on one side\",\n      \"Made from Moso bamboo from certified managed forests (certificate CERT-000000)\",\n      \"Finished with food-grade mineral oil\",\n      \"Includes a 1 year warranty\"\n    ]\n  },\n  \"marketplace\": {\n    \"title\": \"Chopping Board Set - Bamboo\",\n    \"bullets\": [\n      \"Bamboo chopping board set including a medium board (30 x 20 cm, 1.8 cm thick) and a large board (40 x 28 cm, 1.8 cm thick)\",\n      \"Large board features a juice groove on one side for carving roasts\",\n      \"Made from Moso bamboo from certified managed forests (certificate CERT-000000) and finished with food-grade mineral oil\",\n      \"Hand wash with warm soapy water and dry standing up (not dishwasher safe)\",\n      \"Re-oil once a month to keep the surface smooth, with a 1 year warranty included\"\n    ]\n  },\n  \"check_before_publishing\": [\n    \"Confirm certificate number CERT-000000 is a placeholder before publishing.\"\n  ]\n}\n```",
+   "checks": [
+    {
+     "id": "json",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "all-parts",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "length-limits",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "five-bullets-max",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "no-banned-claims",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "numbers-from-spec",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 4,
+    "total": 4,
+    "misses": []
+   },
+   "seconds": 2.87,
+   "tokens": [
+    991,
+    431
+   ],
+   "cached": false
+  },
+  {
+   "example": "03-kids-lunch-box",
+   "output": "```json\n{\n  \"website\": {\n    \"title\": \"Kids' Bento Lunch Box\",\n    \"description\": \"Make school lunches easy with a bento box designed for everyday use. It has four compartments and holds 1.2 litres in total. The one-hand latch is simple for children aged 5 and up to open. It is recommended for ages 3 and up. The base and lid are made from polypropylene with a food-grade silicone seal. It is BPA-free (tested by an accredited lab, report LAB-2026-03321). The base is dishwasher safe on the top rack, and you should hand wash the lid.\",\n    \"bullets\": [\n      \"Four compartments with a total capacity of 1.2 litres\",\n      \"One-hand latch that children aged 5 and up can open\",\n      \"BPA-free (tested by an accredited lab, report LAB-2026-03321)\",\n      \"Base is dishwasher safe on the top rack; hand wash the lid\",\n      \"Backed by a 2-year warranty on the latch\"\n    ]\n  },\n  \"marketplace\": {\n    \"title\": \"Kids' bento lunch box with 4 compartments, 1.2 litres capacity, and one-hand latch\",\n    \"bullets\": [\n      \"Four compartments with a 1.2-litre total capacity, available in Coral, Ocean, and Lemon\",\n      \"One-hand latch designed for children aged 5 and up to open easily (recommended for ages 3 and up)\",\n      \"Made with a polypropylene body and lid, and a food-grade silicone seal, certified BPA-free (tested by an accredited lab, report LAB-2026-03321)\",\n      \"Base is dishwasher safe on the top rack and the lid is hand wash only; not microwave safe\",\n      \"Leak-resistant design for thick foods like yoghurt and sauces; includes a 2-year warranty on the latch\"\n    ]\n  },\n  \"check_before_publishing\": [\n    \"Confirm the product images match the three listed colours: Coral, Ocean, and Lemon.\",\n    \"Ensure the age recommendation (recommended for ages 3 and up, latch for ages 5 and up) is clearly visible to customers.\"\n  ]\n}\n```",
+   "checks": [
+    {
+     "id": "json",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "all-parts",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "length-limits",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "five-bullets-max",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "no-banned-claims",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "id": "numbers-from-spec",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "score": {
+    "points": 4,
+    "total": 4,
+    "misses": []
+   },
+   "seconds": 3.16,
+   "tokens": [
+    979,
+    508
+   ],
+   "cached": false
+  }
+ ]
+}

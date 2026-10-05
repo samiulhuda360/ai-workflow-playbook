@@ -1,0 +1,19 @@
+From: Kevin Wu <kevin.wu@supplier-a.example>
+To: orders@company.example
+Date: Fri, 2 Oct 2026 11:05 +0800
+Subject: PO-20452 – raw material cost adjustment
+
+Dear team,
+
+Polypropylene resin prices have risen sharply this quarter. For PO-20452 we need to adjust the unit price of
+TW-LBX-01 (bento lunch box, 2,400 pcs) from USD 3.10 to USD 3.29 per piece.
+
+TW-LBX-02 (snack pots, 3,600 pcs) stays at USD 1.45.
+
+Production is scheduled to start on 19 October 2026. Please confirm the new price before then so we can buy the
+material.
+
+Thank you for your understanding.
+
+Kevin Wu
+Sales Manager, Supplier A Manufacturing Co.
