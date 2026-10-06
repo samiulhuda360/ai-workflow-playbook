@@ -12,7 +12,10 @@ Repeatable AI workflows for business teams, and everything needed to roll them o
 It's for operations, customer-experience, marketing and finance teams that use AI chat now and then and want the
 same reliable result every time. It's also for whoever has to show that the workflows are safe and actually used.
 
-![Evaluation run: six workflows, every answer-key fact and check passing](docs/screenshots/eval-run.png)
+![A tour of the playbook: the evaluation run, one output and its checks, the two n8n automations running, the adoption report and the workshop slides](docs/screenshots/tour.gif)
+
+*A tour in eight screens, all taken from real runs: the evaluation, an output and its checks, n8n inbox triage and
+the price check, the adoption report and the workshop.*
 
 **Contents:** [Features](#features) · [The workflows](#the-workflows) · [Architecture](#architecture) ·
 [How it works](#how-it-works) · [Screenshots](#screenshots) · [n8n automations](#n8n-automations) ·
