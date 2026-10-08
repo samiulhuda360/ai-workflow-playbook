@@ -9,6 +9,10 @@ Reads a month of reviews and returns:
 - every review a person must read today: injuries, allergic reactions, contamination, child safety and legal
   threats.
 
+**In plain words:** paste in a month of customer reviews and you get back what people keep praising or complaining
+about, with real quotes, plus a short list of reviews someone must read today. A pinched finger mentioned in a
+four-star review still makes that list.
+
 ## How it works
 
 ```mermaid

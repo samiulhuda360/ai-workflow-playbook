@@ -7,6 +7,10 @@ Suppliers write about orders in every style: delays, part shipments, price rises
 email into the order changes, a flag when a person must decide, and a reply draft that doesn't commit you to
 anything.
 
+**In plain words:** paste in an email like "Sorry, the blue bottles are delayed two weeks and the price is going
+up" and you get back a short summary, a list of exactly what changed in the order, a warning that the price rise
+needs your decision, and a polite reply that agrees to nothing yet. You check it and send it yourself.
+
 ## How it works
 
 ```mermaid

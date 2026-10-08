@@ -1,5 +1,8 @@
 # AI champions guide
 
+**In plain words:** a short guide for the colleague in each team who helps others get started with AI: what they do
+each week and month, and how to tell why someone has stopped using it, so the right fix is applied.
+
 A champion is someone in a team who uses AI workflows well and helps the people around them do the same. About
 two hours a month. Champions are not IT support and not the AI police: they make it easy to start and safe to
 keep going.

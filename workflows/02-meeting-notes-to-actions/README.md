@@ -6,6 +6,10 @@ Gemini Gems
 Turns rough notes or a meeting transcript into decisions, actions with owners and dates, and open questions.
 Every decision and action carries the exact sentence it came from, so nobody has to trust the summary blindly.
 
+**In plain words:** paste in your scribbled notes from Monday's team meeting and you get back what was decided,
+who is doing what by when, and what is still unanswered, such as a job nobody took on. Each item shows the line of
+the notes it came from, so you can check it in seconds.
+
 ## How it works
 
 ```mermaid

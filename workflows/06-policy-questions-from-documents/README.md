@@ -8,6 +8,10 @@ shipping on a change-of-mind return?" or "Can I paste customer details into Chat
 document and section. When the documents don't cover a question, it says so and names who to ask, rather than
 answering from general knowledge.
 
+**In plain words:** load your staff handbook and policies into the AI tool once. After that, anyone can ask a
+question in their own words and get a short answer that points to the exact section it came from, or an honest
+"not covered, ask this person".
+
 ## How it works
 
 ```mermaid

@@ -1,5 +1,8 @@
 # Workshop: getting real work done with AI (60 minutes)
 
+**In plain words:** a one-hour session that takes a team from "we try AI chat sometimes" to each person having one
+AI workflow set up for a job they do every week, and knowing what to check before trusting the answer.
+
 For a team of up to 12 who use AI chat now and then but don't yet have workflows they repeat. Run it in person or
 on a call with screens shared. Everyone needs a seat in an approved AI tool before the session (check access the
 week before: missing access is the commonest reason people never start).
@@ -8,6 +11,9 @@ week before: missing access is the commonest reason people never start).
 and knows the checks they must make before trusting the output.
 
 ![Four of the workshop slides](../docs/screenshots/workshop-slides.png)
+
+*Four of the twelve workshop slides: the title, why a workflow beats one-off chat requests, the three rules every
+workflow follows, and the checks to make before trusting an answer.*
 
 ```mermaid
 %%{init: {"theme": "base", "themeVariables": {"primaryColor": "#e6f2ef", "primaryBorderColor": "#2f6f68", "primaryTextColor": "#13302c", "lineColor": "#5f7471", "secondaryColor": "#f3efe6", "tertiaryColor": "#f7f8f6"}}}%%

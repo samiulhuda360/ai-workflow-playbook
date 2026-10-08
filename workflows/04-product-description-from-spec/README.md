@@ -7,6 +7,10 @@ Writes website and marketplace copy from a product spec sheet in the brand's voi
 channel's length limits and makes no claims the business can't support, such as "non-toxic", "eco-friendly" or
 "best".
 
+**In plain words:** paste in the supplier's product sheet for a new lunch box and you get back a product page for
+your website and a shorter listing for a marketplace, in your brand's tone. Every size and figure comes from the
+sheet, and any claim that needs proof is listed for you to confirm before publishing.
+
 ## How it works
 
 ```mermaid

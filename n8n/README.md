@@ -3,12 +3,20 @@
 Two workflows for [n8n](https://n8n.io) that run without anyone pasting text. Both leave every decision that
 matters to a person.
 
+**In plain words:** n8n is a tool that links apps together into automatic steps. The first automation reads each
+new customer email, sorts it (an order question, a complaint, a safety issue and so on), and either drafts a reply
+or puts it in a queue for a person; nothing is sent to a customer automatically. The second checks competitors'
+prices every Monday morning and sends the team one short summary of anything that changed or undercuts you.
+
 | Workflow | Runs | Uses AI | A person decides |
 |---|---|---|---|
 | [inbox-triage.json](inbox-triage.json) | when an email arrives (webhook), or on the sample emails | yes: sorts the email and drafts a reply | anything risky, and every reply before it's sent |
 | [price-watch.json](price-watch.json) | every Monday at 8 am, or on demand | no: plain rules | whether to change a price |
 
 ![Inbox triage after a run on ten sample emails](../docs/screenshots/n8n-inbox-triage-run.png)
+
+*The email-sorting automation after a run on ten sample emails. Each box is one step; the email flows from left to
+right, and six of the ten ended up with a person.*
 
 ## Inbox triage with AI drafts
 

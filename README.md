@@ -2,22 +2,70 @@
 
 [![CI](https://github.com/samiulhuda360/ai-workflow-playbook/actions/workflows/ci.yml/badge.svg)](https://github.com/samiulhuda360/ai-workflow-playbook/actions/workflows/ci.yml)
 
+![A tour of the playbook: the test results, one answer and its checks, the two automations running, the report on who uses the workflows, and the workshop slides](docs/screenshots/tour.gif)
+
+*A tour in eight screens, all taken from real runs: the test results for every workflow, one AI answer with the
+checks it passed, the email-sorting automation and the weekly price check at work, the report on who is using the
+workflows, and the training slides.*
+
+## What it does
+
+Many office teams use AI chat now and then, but everyone asks it differently and the results vary. This playbook
+gives a business six ready-made ways to use AI for common office jobs, such as turning a supplier's email into an
+order update or answering staff questions from the handbook. Each one comes with written instructions to paste
+into the AI tool you already have, checks that catch made-up facts, and a plan to train the team and see whether
+they actually use it.
+
+## A real-life example
+
+Priya is the operations lead at Acme Homewares, a small online shop selling drink bottles, lunch boxes and kitchen
+goods.
+
+**Before:** her team uses AI chat, but each person types their own request. One summary of a supplier email gets
+a quantity wrong; another reply draft quietly agrees to a price rise nobody approved. Nobody can say whether the AI
+is helping, or who is using it at all.
+
+**With the playbook:**
+1. She pastes the supplier-email instructions into the team's AI tool once.
+2. From then on, anyone pastes a supplier email and gets back the same thing every time: a short summary, a table
+   of what changed in the order, a flag when a person must decide (a price rise, a substitute product, a later
+   date), and a polite reply that agrees to nothing.
+3. A 30-second checklist tells them what to look at before trusting it.
+4. She runs the one-hour workshop, so each person sets up a workflow for a task they do every week, and logs who
+   uses it afterwards.
+5. Two weeks later the adoption report shows who is using a workflow on their own, and who is stuck and why.
+
+**After:** in testing, the six workflows got every fact on their answer sheets right (105 out of 105 across 31
+examples) and passed every automatic check, answering in 2 to 4 seconds. The email-sorting automation put all 10
+sample emails in the right category and sent the right ones to a person.
+
+## How you would use it
+
+1. Pick a workflow from [the table below](#the-workflows), for example "Supplier email → order update".
+2. Open its folder and copy the text from `instructions.md`.
+3. In Claude, ChatGPT or Gemini, create a project, custom GPT or Gem and paste the instructions in. This takes about
+   five minutes and is done once.
+4. Paste your input (an email, meeting notes, a review export, a spec sheet) and press enter.
+5. Read the answer, deal with anything marked for a person, and run the short checklist in the workflow's guide.
+6. Copy the result where it belongs, or edit the reply draft and send it yourself.
+
+Running the tests and the automations is covered in [Getting started](#getting-started) further down.
+
+## Overview
+
 Repeatable AI workflows for business teams, and everything needed to roll them out:
 
 - written instructions that work in Claude Projects, ChatGPT GPTs and Gemini Gems;
-- automatic checks on every output, and an evaluation runner that scores each workflow against answer keys;
-- two n8n automations;
+- automatic checks on every output, and an evaluation runner (a script that tests each workflow) that scores it
+  against answer keys (the facts each example must get right);
+- two n8n automations (n8n is a tool for connecting apps into automatic steps);
 - a workshop, a champions guide and an adoption tracker.
 
 It's for operations, customer-experience, marketing and finance teams that use AI chat now and then and want the
 same reliable result every time. It's also for whoever has to show that the workflows are safe and actually used.
 
-![A tour of the playbook: the evaluation run, one output and its checks, the two n8n automations running, the adoption report and the workshop slides](docs/screenshots/tour.gif)
-
-*A tour in eight screens, all taken from real runs: the evaluation, an output and its checks, n8n inbox triage and
-the price check, the adoption report and the workshop.*
-
-**Contents:** [Features](#features) · [The workflows](#the-workflows) · [Architecture](#architecture) ·
+**Contents:** [What it does](#what-it-does) · [A real-life example](#a-real-life-example) ·
+[How you would use it](#how-you-would-use-it) · [Features](#features) · [The workflows](#the-workflows) · [Architecture](#architecture) ·
 [How it works](#how-it-works) · [Screenshots](#screenshots) · [n8n automations](#n8n-automations) ·
 [Rolling it out](#rolling-it-out-to-a-team) · [Tech stack](#tech-stack) · [Getting started](#getting-started) ·
 [Usage](#usage) · [Project structure](#project-structure) · [Testing](#testing-and-ci) ·
@@ -39,7 +87,7 @@ the price check, the adoption report and the workshop.*
   - every number found in the source;
   - no banned claims;
   - length limits and citations.
-- **Evaluation runner.** It runs every example against any OpenAI-compatible model and scores the answer keys. It
+- **Evaluation runner.** It runs every example against any OpenAI-compatible model (any AI service that accepts OpenAI's request format) and scores the answer keys. It
   also compares models on accuracy, speed and tokens, and writes a report.
 - **Two n8n automations:**
   - AI inbox triage, with fixed safety rules after the AI step;
@@ -189,16 +237,17 @@ example, the reviews that need a person), `count`, `mentions`, `excludes`, `decl
 | | |
 |---|---|
 | ![One output and its checks](docs/screenshots/output-and-checks.png) | ![Adoption report](docs/screenshots/adoption-report.png) |
-| **One stored output and its checks.** Workflow 01 on a part shipment: the JSON, four checks passed, and the answer key at 4/4. | **The adoption report.** It shows who uses a workflow on their own, what blocks people, and who to follow up this week. |
+| **One answer and its checks.** A supplier says only part of an order has shipped: the order changes the AI pulled out, the four checks it passed, and all 4 expected facts correct. | **The adoption report.** It shows who uses a workflow on their own, what blocks people, and who to follow up this week. |
 | ![Inbox triage run in n8n](docs/screenshots/n8n-inbox-triage-run.png) | ![Price check run in n8n](docs/screenshots/n8n-price-check-run.png) |
-| **Inbox triage in n8n.** Ten sample emails: six go to the review queue and four get a reply draft. | **The weekly price check in n8n.** Four products checked, one summary for the team. |
+| **Sorting incoming email.** Ten sample emails: six go to a person to review and four get a reply draft. | **The weekly price check.** Four products compared with competitors' prices, one summary for the team. |
 
 ![Inbox triage decisions for ten emails](docs/screenshots/n8n-inbox-triage-output.png)
-*Inbox triage output. Each email gets a category, a priority, whether a person must handle it and why, and a reply
-draft that promises nothing.*
+*The email-sorting result. Each email gets a category, a priority, whether a person must handle it and why, and a
+reply draft that promises nothing.*
 
 ![Workshop slides](docs/screenshots/workshop-slides.png)
-*Four of the twelve workshop slides ([workshop/slides.md](workshop/slides.md), Marp).*
+*Four of the twelve slides for the one-hour team workshop ([workshop/slides.md](workshop/slides.md), made with
+Marp).*
 
 ## n8n automations
 

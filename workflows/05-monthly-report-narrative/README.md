@@ -7,6 +7,10 @@ Turns the month's KPI table and the managers' notes into leadership commentary: 
 what to watch, and questions for the team. It writes "reason not given" when the notes don't explain a change,
 instead of guessing one.
 
+**In plain words:** paste in this month's key figures (sales, costs, orders and so on) and the managers' comments,
+and you get back the written commentary for the monthly report. If sales dropped and nobody explained why, it says
+so and asks the question, rather than inventing a reason.
+
 ## How it works
 
 ```mermaid
